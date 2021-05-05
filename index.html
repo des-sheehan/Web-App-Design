@@ -26,7 +26,7 @@
                 </div>
             </div>
             <img class="profile-image" src="images/member-1.jpg" alt="Profile picture of the first of member 1">
-            <h3>Student 1</h3>
+            <h3>Student Name</h3>
         </div>
     </header>
 
@@ -192,7 +192,7 @@
             <form>
                 <input type="text" placeholder="Search for User" class="form-field" id="user-field">
                 <textarea placeholder="Message for User" class="form-area" id="message-field"></textarea>
-                <button class="button-primary" id="send">Send</button>
+                <button class="button button-message" id="send">Send</button>
             </form>
         </section>
 
@@ -200,26 +200,19 @@
         <section class="settings">
             <h3>Settings</h3>
 
-            <label class="switch-light switch-holo" onclick="">
+            <label class="switch-light switch-ios" onclick="">
                 <input type="checkbox">
-              
-                <strong>
-                  Send Email Notifications
-                </strong>
-              
+                <strong>Send Email Notifications</strong> 
                 <span>
                   <span>Off</span>
                   <span>On</span>
                   <a></a>
                 </span>
               </label>
-              <label class="switch-light switch-holo" onclick="">
+
+              <label class="switch-light switch-ios" onclick="">
                 <input type="checkbox">
-              
-                <strong>
-                  Set Profile to Public
-                </strong>
-              
+                <strong>Set Profile to Public</strong>
                 <span>
                   <span>Off</span>
                   <span>On</span>
@@ -233,9 +226,9 @@
                 <options>EST</options>
                 <option>CET</option>
             </select>
-            <div>
-                <button class="button-primary" id="save">Save</button>
-                <button class="button-disabled" id="cancel">Cancel</button>
+            <div class="save-cancel-buttons">
+                <button class="button button-save" id="save">Save</button>
+                <button class="button button-cancel" id="cancel">Cancel</button>
             </div>
         </section>
 

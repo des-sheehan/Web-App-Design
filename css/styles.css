@@ -15,6 +15,7 @@
 }
 main {
     grid-area: main;
+    margin-bottom: 2rem;
 }
 
     /* ---BASE STYLES--- */
@@ -22,8 +23,8 @@ body {
     background-color: snow;
 }
 section {
-    max-width: 92%;
-    margin: auto;
+    max-width: 90%;
+    margin: 0 auto;
 }
 header {
     background-color: steelblue;
@@ -32,15 +33,36 @@ header {
 nav {
     background-color: rgb(63, 53, 128);
 }
+h1 {
+    font-weight: lighter;
+}
+h2 {
+    font-size: 1.1rem;
+}
 h3 {
+    font-size: 0.9rem;
     text-transform: uppercase;
-    font-size: 1.3em;
-    letter-spacing: 2px;
+    letter-spacing: 1.3px;
+}
+h4 {
+    font-size: 1.1rem;
+    color: rgb(65, 112, 173);
+    margin: 0.5rem 0 auto;
+    padding-top: 0.3rem;
+}
+p {
+    font-size: 0.7rem;
+}
+a {
+    font-size: 0.7rem;
 }
 .profile-image {
     border-radius: 50%;
-    max-width: 6em;
+    max-width: 2rem;
     height: auto;
+}
+placeholder {
+
 }
 
     /* ---HEADER--- */
@@ -49,25 +71,31 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 3em;
-    padding: 1em;
+    height: 2.5rem;
+    padding: 0.5rem;
+}
+header h3 {
+    font-weight: lighter;
+    font-size: 0.5rem;
+    margin: auto;
 }
 .header-right {
     display: flex;
     justify-content: space-between;
-    padding: auto 1em;
+    padding: auto 0.5rem;
 }
 .bell {
     fill: snow;
-    width: 2em;
-    margin: auto 1em;  
+    width: 1.2rem;
+    padding-top: 0.2rem;
+    margin: auto 0.5rem;  
 }
 .header-right img {
-    margin: auto 1em; 
+    margin: auto 0.5rem; 
 }
 .header-right .profile-image {
-    max-height: 4em;
-    margin: auto 1em; 
+    max-height: 2rem;
+    margin: auto 0.5rem; 
 }
 
     /* ---NAV BAR--- */
@@ -76,11 +104,11 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 3em;
-    padding: 1em 5em;
+    height: 2rem;
+    padding: 0.5rem 3rem;
 }
 nav img {
-    width: 3em;
+    width: 1.8rem;
 }
 nav img:hover {
     cursor: pointer;
@@ -89,11 +117,11 @@ nav img:hover {
     /* ---DASHBOARD--- */
 .dashboard {
     display: flex;
-    height: 5em;
+    height: 3rem;
     }
 .headline {
     margin: auto;
-    padding: 0 1em;
+    padding: 0 1rem;
     flex-grow: 1; 
 }
 .dashboard-search {
@@ -105,7 +133,7 @@ nav img:hover {
 .dashboard-search input {
     width: 100%;
     height: 100%;
-    padding-left: 1em;
+    padding-left: 1rem;
     border-top: none;
     border: 2px solid lightgrey;
 }
@@ -118,59 +146,47 @@ nav img:hover {
 }
 .traffic-nav li {
     list-style: none;
+    font-size: 0.8rem;;
     margin-left: auto;
 }
 .widget-container-full canvas {
     width: 100%;
-    height: 15em;
+    height: 15rem;
 }
 
 /* ---Social Stats--- */
 .social-container {
     width: auto;
-    height: 7em;
-    margin-top: 1em;
-    margin-bottom: 1em;
+    height: 5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     background-color: rgb(241, 236, 236);
-    border: 2px solid gray;
+    border: 2px solid lightgray;
     border-radius: 5px;
     display: flex;
     align-items: center;
 }
 .social-image {
-    width: 3em;
-    height: auto;
+    width: 1.5rem;
+    height: 1.5rem;
     fill: snow;
-    padding: 1em;
-    margin: 1em 3em;
+    padding: 0.7rem;
+    margin: 0.5rem 1.5rem;
     background-color: rgb(65, 112, 173);
     border-radius: 50%;
 }
-h4 {
-    font-size: 1.5em;
-    color: rgb(65, 112, 173);
-    margin: 1em 0 auto;
-    padding-top: 1em;
-    
-}
-.social-container p {
-    font-size: 3em;
-    margin-top: 0;
-}
-
 
 /* ---New Members--- */
-
 .members-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     border-bottom: 1px solid darkgray;
-    padding: 1em 0;
-    margin: 1em 0;
+    padding: 1rem 0;
+    margin: 1rem 0;
 }
 .members-container p {
-    margin: 0.5em 0 0 0;
+    margin: 0.3rem 0 0 0;
 }
 .members-container a {
     text-decoration: none;
@@ -185,13 +201,13 @@ h4 {
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid darkgray;
-    padding: 1em 0;
-    margin: 1em 0;
+    padding: 1rem 0;
+    margin: 1rem 0;
 }
 .activity-container p {
     max-width: 75%;
     text-align: center;
-    margin: 0.5em 0 0 0;
+    margin: 0.5rem 0 0 0;
 }
 
 /* ---Message User--- */
@@ -201,58 +217,64 @@ h4 {
     width: 100%;
     background-color: rgb(241, 236, 236);
     border: 2px solid lightgrey;
-    border-radius: 10px;
-    padding: 0.5em 0;
-    margin: 1em 0;
+    border-radius: 5px;
+    padding: 0 0 0.5rem 0;
+    margin: 1rem 0;
 }
 .form-field {
-    height: 2em;
+    height: 1.5rem;
 }
 .form-area {
-    height: 5em;
+    height: 7rem;
 }
 
 /* ---Settings--- */
 
-.switch-light {
-    padding: 1em 0;
-    width: 100%;
-}
-
 .select-field {
     display: block;
     width: 100%;
-    height: 3em;
+    height: 2.5rem;
     background-color: rgb(241, 236, 236);
     border: 2px solid lightgrey;
     border-radius: 10px;  
-    padding: 0.5em 0;
-    margin: 2em 0 1em 0;
+    padding: 0.5rem 0;
+    margin: 2rem 0 1rem 0;
 }
-
-.button-primary {
-    display: inline-block;
-    background-color: rgb(96, 124, 177);
+.button {
     color: snow;
-    width: 100%;
-    height: 3em;
-    margin: 0.5em 0;
-    border-radius: 5px;
+    height: 2.5rem;
     border: none;
-}
-
-.button-disabled {
-    display: inline-block;
-    background-color: grey;
-    color: snow;
-    width: 100%;
-    height: 3em;
-    margin: 0.5em 0 2em 0;
     border-radius: 5px;
-    border: none;
 }
-
-.button-primary:hover,
-.button-disabled:hover {
+.button:hover {
     box-shadow: 0px 3px 5px rgb(12, 12, 12, 0.5);
+}
+.button-message:active,
+.button-save:active {
+    background-color: rgb(120, 149, 204);
+}
+.button-cancel:active {
+    background-color: rgb(167, 164, 164);
+}
+.button-message {
+    background-color: rgb(96, 124, 177);
+    margin: 0.5rem 0;
+    width: 100%;
+}
+.button-save {
+    background-color: rgb(96, 124, 177);
+    margin: 0.5rem 0;
+}
+.button-cancel {
+    background-color: grey;
+    margin: 0.5rem 0 2rem 0;
+}
+.save-cancel-buttons {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+.save-cancel-buttons .button {
+    width: 50%;
+    margin: 5px;
 }
