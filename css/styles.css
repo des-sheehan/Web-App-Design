@@ -3,6 +3,7 @@
     font-family: 'Exo', sans-serif;
 }
     /* ---BASE STYLES--- */
+
 body {
     background-color: snow;
 }
@@ -20,33 +21,34 @@ h1 {
     font-weight: lighter;
 }
 h2 {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
 }
 h3 {
     padding-left: 1rem;;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     text-transform: uppercase;
     letter-spacing: 1.3px;
 }
 h4 {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     color: rgb(65, 112, 173);
     margin: 0.5rem 0 auto;
     padding-top: 0.3rem;
 }
 p {
-    font-size: 0.7rem;
+    font-size: 1rem;
 }
 a {
-    font-size: 0.7rem;
+    font-size: 1rem;
 }
 .profile-image {
     border-radius: 50%;
-    max-width: 2rem;
+    max-width: 5rem;
     height: auto;
 }
 
     /* ---HEADER--- */
+
 header {
     display: flex;
     justify-content: space-between;
@@ -79,6 +81,7 @@ header h3 {
 }
 
     /* ---NAV BAR--- */
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -94,13 +97,15 @@ nav img:hover {
 }
 
     /* ---DASHBOARD--- */
+
 .dashboard {
     display: inline-flex;
     height: 3rem;
     }
 .alert-banner {
-    width: 95%;
+    width: 90%;
     height: 2.5rem;
+    padding: 0.3rem;
     margin: 0.5rem auto;
     display: flex;
     background-color: steelblue;
@@ -110,11 +115,13 @@ nav img:hover {
 }
 .alert-banner-text {
     align-self: flex-end;
+    padding-left: 1rem;
     margin: auto;
     margin-left: 0.5rem;
 }
 .alert-banner-close {
     align-self: flex-start;
+    padding-right: 1rem;
     margin: auto;
     margin-right: 0.5rem;
 }
@@ -141,6 +148,7 @@ nav img:hover {
 }
 
     /* ---TRAFFIC--- */
+
 .traffic-nav {
     max-width: 75%;
     display: flex;
@@ -151,12 +159,9 @@ nav img:hover {
     font-size: 0.8rem;;
     margin-left: auto;
 }
-.widget-container-full canvas {
-    width: 95%;
-    height: 15rem;
-}
 
 /* ---Social Stats--- */
+
 .social-stats {
     width: 95%
 }
@@ -187,6 +192,7 @@ nav img:hover {
 }
 
 /* ---New Members--- */
+
 .members-container {
     display: flex;
     flex-direction: column;
@@ -221,15 +227,21 @@ nav img:hover {
 }
 
 /* ---Message User--- */
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    max-width: 90%;
+}
+
 .form-field,
 .form-area {
-    display: flex;
-    width: 95%;
-    background-color: rgb(241, 236, 236);
+    background-color: rgb(233, 233, 233);
     border: 2px solid lightgrey;
     border-radius: 5px;
-    padding: 0 0 0.5rem 0;
-    margin: 1rem auto;
+    padding: 1rem;
+    margin-bottom: 1rem;
 }
 .form-field {
     height: 1.5rem;
@@ -240,12 +252,11 @@ nav img:hover {
 
 /* ---Settings--- */
 
-
 .select-field {
     display: flex;
     width: 95%;
     height: 2.5rem;
-    background-color: rgb(241, 236, 236);
+    background-color: rgb(233, 233, 233);
     border: 2px solid lightgrey;
     border-radius: 10px;  
     padding: 0.5rem 0;
@@ -253,12 +264,19 @@ nav img:hover {
 }
 .button {
     color: snow;
-    height: 2.5rem;
+    height: 3.5rem;
     border: none;
     border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.button-message,
+.button-save  {
+    background-color: rgb(96, 124, 177);
+}
+.button-save {
+    margin: 0.5rem auto;
 }
 .button:hover {
     box-shadow: 0px 3px 5px rgb(12, 12, 12, 0.5);
@@ -269,15 +287,6 @@ nav img:hover {
 }
 .button-cancel:active {
     background-color: rgb(167, 164, 164);
-}
-.button-message {
-    background-color: rgb(96, 124, 177);
-    margin: 0.5rem auto;
-    width: 95%;
-}
-.button-save {
-    background-color: rgb(96, 124, 177);
-    margin: 0.5rem auto;
 }
 .button-cancel {
     background-color: grey;
@@ -293,9 +302,26 @@ nav img:hover {
     margin: 5px;
 }
 
+/* ---Toggle Switches--- */
 
+.switch-light {
+    display: flex;
+    align-items: flex-start;
+    width: 95%;
+    margin: 0 auto;
+}
+label strong {
+    flex-basis: 75%;
+}
+label.switch-light.switch-ios {
+    height: 3rem;
+}
 
 /* ---LAYOUT---  */
+
+canvas {
+    margin: 1rem 1.5rem;
+}
 
 .grid-container {
     display: grid;

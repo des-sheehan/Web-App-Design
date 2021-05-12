@@ -5,16 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webapp - Project 07</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/toggle-switch.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Exo:wght@300;400;700&display=swap" rel="stylesheet"></head>
 
 <body class="grid-container">
 
-    <header class="header">
+    <header class="header" id="top">
         <h1><strong>Web</strong>App&#8482</h1>
         <div class="header-right">
             <div class="bell">
@@ -31,10 +31,10 @@
     </header>
 
     <nav class="navigation">
-        <a><img src="svgs/home.svg"></a>
-        <a><img src="svgs/bar-chart.svg"></a>
-        <a><img src="svgs/members.svg"></a>
-        <a><img src="svgs/settings.svg"></a>
+        <a href=#top><img src="svgs/home.svg"></a>
+        <a href=#charts><img src="svgs/bar-chart.svg"></a>
+        <a href=#members><img src="svgs/members.svg"></a>
+        <a href=#settings><img src="svgs/settings.svg"></a>
     </nav>
 
     <main class="main">
@@ -53,7 +53,7 @@
         </div>
 
         <!-- Traffic Section -->
-        <section class="traffic">
+        <section class="traffic" id="charts">
             <div class="traffic-header">
                 <h3>Traffic</h3>
                 <ul class="traffic-nav">
@@ -65,7 +65,7 @@
             </div>
             <div class="widget-container-full">
                 <!-- element line graph will attach here -->
-                <canvas id="traffic-chart" src="images/placeholders/chart_holder.jpg"></canvas>
+                <canvas id="traffic-chart"></canvas>
             </div>
         </section>
 
@@ -127,7 +127,7 @@
         </section>
 
             <!-- New Members -->
-            <section class="members">
+            <section class="members" id="members">
                 <h3>New Members</h3>         
                     <div class="members-container">
                         <img class="profile-image" src="images/member-1.jpg">
@@ -199,7 +199,7 @@
         </section>
 
         <!-- Settings -->
-        <section class="settings">
+        <section class="settings" id="settings">
             <h3>Settings</h3>
 
             <label class="switch-light switch-ios" onclick="">
@@ -236,6 +236,7 @@
 
     </main>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.0/chart.min.js"></script>
     <script src="js/app.js"></script>
-</body>
+    </body>
 </html>
