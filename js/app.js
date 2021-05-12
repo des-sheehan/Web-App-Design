@@ -128,3 +128,23 @@ let mobileChart = new Chart(mobileCanvas, {
     data: mobileData,
     options: mobileOptions
 });
+
+
+// MESSAGING SECTION ------------------------------------------------------
+
+const user = document.getElementById("user-field");
+const message = document.getElementById("message-field");
+const send = document.getElementById("send");
+
+send.addEventListener('click', e => {
+    if (user.value === "" && message.value === "") {
+        alert("Please fill out user and message fields before sending");
+    } else if (user.value === "") {
+        alert("Please fill out user field before sending");
+    } else if (message.value === "") {
+        alert("Please fill out message field before sending");
+    } else {
+        alert(`Message successfully sent to: ${user.value} `);
+    }
+});
+

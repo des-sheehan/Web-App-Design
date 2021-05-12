@@ -248,7 +248,9 @@ form {
 }
 .form-area {
     height: 7rem;
+    resize: none;
 }
+
 
 /* ---Settings--- */
 
@@ -314,6 +316,7 @@ label strong {
     flex-basis: 75%;
 }
 label.switch-light.switch-ios {
+    margin-top: 1rem;
     height: 3rem;
 }
 
