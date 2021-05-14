@@ -392,9 +392,7 @@ canvas {
     .main {
         display: grid; 
         grid-template-columns: 50%;
-
     }
-
     .navigation {
         flex-direction: column;
         justify-content: flex-start;
@@ -405,7 +403,10 @@ canvas {
     .navigation > a {
         padding: 1em;
     }
-
+    .dashboard, .alert, .traffic, .social-stats,
+    .members, .activity, .message, .settings  {
+        grid-column: 1 / span 2;
+    }  
     .social-boxes {
         flex-direction: row;
         justify-content: space-between;
@@ -415,23 +416,17 @@ canvas {
     }
     .mobile {
         grid-column: 2 / span 1;
-    } 
-    .dashboard, .alert, .traffic, .social-stats,
-    .members, .activity, .message, .settings  {
-        grid-column: 1 / span 2;
-    }     
-    .widget-container-full {
-        width: 90vw;
     }
-    .widget-container-half {
-        width: 45vw;
-    }
-} 
+}
 
 /* ---Media Queries--- */
 /* ---Desktop View---  */
 
-
-.widget-container-full, .widget-container-half {
-    width: 95vw;
-} 
+@media (min-width: 1024px) {
+    .members, .message   {
+        grid-column: 1 / span 1;
+    }  
+    .activity, .settings {
+        grid-column: 2 / span 1;
+    }
+}
