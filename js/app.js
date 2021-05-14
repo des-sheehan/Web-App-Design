@@ -18,6 +18,14 @@ alertBanner.addEventListener('click', e => {
     }
 });
 
+// SEND BUTTON ------------------------------------------------------
+
+// To stop page reloading on send
+const sendButton = document.getElementById("send");
+
+sendButton.addEventListener('click', e => {
+    e.preventDefault();
+})
 
 // LINE GRAPH ------------------------------------------------------
 

@@ -7,9 +7,6 @@
 body {
     background-color: snow;
 }
-main {
-    margin: 0 auto;
-}
 header {
     background-color: steelblue;
     color: white;
@@ -24,7 +21,6 @@ h2 {
     font-size: 1.3rem;
 }
 h3 {
-    padding-left: 1rem;;
     font-size: 1.1rem;
     text-transform: uppercase;
     letter-spacing: 1.3px;
@@ -53,12 +49,12 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 2.5rem;
+    height: 3rem;
     padding: 0.5rem;
 }
 header h3 {
     font-weight: lighter;
-    font-size: 0.5rem;
+    font-size: 0.7rem;
     margin: auto;
 }
 .header-right {
@@ -68,15 +64,20 @@ header h3 {
 }
 .bell {
     fill: snow;
-    width: 1.2rem;
+    width: 1.7rem;
     padding-top: 0.2rem;
     margin: auto 0.5rem;  
+    transition: 0.5s ease-in-out;
+}
+.bell:hover {
+    cursor: pointer;
+    transform: rotate(10deg);
 }
 .header-right img {
     margin: auto 0.5rem; 
 }
 .header-right .profile-image {
-    max-height: 2rem;
+    max-height: 3rem;
     margin: auto 0.5rem; 
 }
 
@@ -86,7 +87,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 2rem;
+    height: 2.5rem;
     padding: 0.5rem 3rem;
 }
 nav img {
@@ -100,13 +101,18 @@ nav img:hover {
 
 .dashboard {
     display: inline-flex;
-    height: 3rem;
+    width: 100%;
+    height: 3.5rem;
     }
+.alert {
+    display: flex;
+    align-self: center;
+}
 .alert-banner {
     width: 90%;
     height: 2.5rem;
     padding: 0.3rem;
-    margin: 0.5rem auto;
+    margin: 1rem auto;
     display: flex;
     background-color: steelblue;
     color: snow;
@@ -161,19 +167,15 @@ nav img:hover {
 }
 
 /* ---Social Stats--- */
-
-.social-stats {
-    width: 95%
-}
 .social-boxes {
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 100%;
 }
 .social-container {
     width: 100%;
     height: 5rem;
-    margin: 0.5rem;
     margin-bottom: 1rem;
     background-color: rgb(241, 236, 236);
     border: 2px solid lightgray;
@@ -192,7 +194,9 @@ nav img:hover {
 }
 
 /* ---New Members--- */
-
+.members-container:last-child {
+    border-bottom: none;
+}
 .members-container {
     display: flex;
     flex-direction: column;
@@ -210,7 +214,9 @@ nav img:hover {
 }
 
 /* ---Recent Activity--- */
-
+.activity-container:last-child {
+    border-bottom: none;
+}
 .activity-container {
     display: flex;
     flex-direction: column;
@@ -231,8 +237,8 @@ nav img:hover {
 form {
     display: flex;
     flex-direction: column;
-    margin: auto;
-    max-width: 90%;
+    /* margin: auto;
+    max-width: 90%; */
 }
 
 .form-field,
@@ -256,19 +262,20 @@ form {
 
 .select-field {
     display: flex;
-    width: 95%;
-    height: 2.5rem;
+    width: 100%;
+    height: 3rem;
     background-color: rgb(233, 233, 233);
     border: 2px solid lightgrey;
     border-radius: 10px;  
     padding: 0.5rem 0;
-    margin: 1rem auto;
+    margin: 1rem 0;
 }
 .button {
     color: snow;
     height: 3.5rem;
     border: none;
     border-radius: 5px;
+    margin-bottom: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -298,18 +305,19 @@ form {
     display: flex;
     justify-content: space-between;
     flex-wrap: nowrap;
+    margin-bottom: 1rem;
 }
 .save-cancel-buttons .button {
     width: 50%;
     margin: 5px;
 }
 
+
 /* ---Toggle Switches--- */
 
 .switch-light {
     display: flex;
-    align-items: flex-start;
-    width: 95%;
+    align-items: center;
     margin: 0 auto;
 }
 label strong {
@@ -319,11 +327,35 @@ label.switch-light.switch-ios {
     margin-top: 1rem;
     height: 3rem;
 }
+span {
+    flex-basis: 33%;
+}
+span > span {
+    margin-top: 0.2rem;
+}
+span > a {
+    margin-top: 0.1rem;
+}
+
+.switch-ios.switch-light > span {
+    height: 3rem;
+    border: 5px grey solid;
+}
 
 /* ---LAYOUT---  */
 
+section:last-child {
+    border-bottom: none;
+}
+section {
+    margin: 0rem 1rem;
+    border-bottom: 1px solid darkgray;
+}
+
 canvas {
-    margin: 1rem 1.5rem;
+    margin: 1rem;
+    min-height: 10vh;
+    max-height: 30vh;
 }
 
 .grid-container {
@@ -343,12 +375,12 @@ canvas {
 }
 .main {
     grid-area: main;
-    display: grid; 
     margin-bottom: 2rem;
 }
 
 
 /* ---Media Queries--- */
+/* ---Tablet View---  */
 
 @media (min-width: 768px) {
     .grid-container {
@@ -358,15 +390,17 @@ canvas {
         "navigation main";
     } 
     .main {
+        display: grid; 
         grid-template-columns: 50%;
+
     }
 
     .navigation {
-        height: auto;
-        padding: 0.5em;
-        margin: 0;
         flex-direction: column;
         justify-content: flex-start;
+        height: 100%;
+        padding: 0.5em;
+        margin: 0;
     }
     .navigation > a {
         padding: 1em;
@@ -385,19 +419,19 @@ canvas {
     .dashboard, .alert, .traffic, .social-stats,
     .members, .activity, .message, .settings  {
         grid-column: 1 / span 2;
-    }
-    
-    
-}
-.widget-container-full, .widget-container-half {
-    width: 95vw;
-}
-
-@media (min-width: 768px) {
+    }     
     .widget-container-full {
         width: 90vw;
     }
     .widget-container-half {
         width: 45vw;
     }
-}
+} 
+
+/* ---Media Queries--- */
+/* ---Desktop View---  */
+
+
+.widget-container-full, .widget-container-half {
+    width: 95vw;
+} 
