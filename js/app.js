@@ -29,10 +29,12 @@ sendButton.addEventListener('click', e => {
 
 // LINE GRAPH ------------------------------------------------------
 
-const trafficCanvas = document.getElementById("traffic-chart")
+const trafficCanvas = document.getElementById("traffic-chart");
+const trafficSelections = document.getElementById("traffic-options");
+var trafficData;
 
-let trafficData = {
-    labels: ["16-22", "23-29", "30-5", "6-12", "13-19", "20-26", "27-3", "4-10", "11-17", "18-24", "25-31" ],
+let trafficDataHourly = {
+    labels: ["16-22", "23-29", "30-5", "6-12", "13-19", "20-26", "27-3", "4-10", "11-17", "18-24", "25-31"],
     datasets: [{
         data: [750, 1250, 1000, 2000, 1500, 1750, 1250, 1850, 2250, 1500, 2500],
         backgroundColor: 'rgba(116, 119, 191, 0.3)',
@@ -40,7 +42,40 @@ let trafficData = {
         borderWidth: 1,
         tension: 0.3,
     }]
-}
+};
+
+let trafficDataDaily = {
+    labels: ["Sun", "Mon", "Tues", "Wedn", "Thurs", "Fri", "Sat"],
+    datasets: [{
+        data: [2000, 1250, 750, 900, 750, 1500, 2250],
+        backgroundColor: 'rgba(116, 119, 191, 0.3)',
+        fill: true,
+        borderWidth: 1,
+        tension: 0.3,
+    }]
+};
+
+let trafficDataWeekly = {
+    labels: ["W1", "W2", "W3", "W4"],
+    datasets: [{
+        data: [2250, 1250, 3000, 3500],
+        backgroundColor: 'rgba(116, 119, 191, 0.3)',
+        fill: true,
+        borderWidth: 1,
+        tension: 0.3,
+    }]
+};
+
+let trafficDataMonthly = {
+    labels: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
+    datasets: [{
+        data: [950, 1750, 3000, 1000, 2500, 3750, 1150, 850, 1250, 1500, 1750, 3500],
+        backgroundColor: 'rgba(116, 119, 191, 0.3)',
+        fill: true,
+        borderWidth: 1,
+        tension: 0.3,
+    }]
+};
 
 let trafficOptions = {
     aspectRatio: 2.5,
@@ -58,6 +93,22 @@ let trafficOptions = {
         }
     }
 };
+
+// Need to make a vaiable for the data selection below. 
+// that selection must be the event click target for the chart.
+
+trafficSelections.addEventListener("click", e => {
+    const element = e.target;
+    if (element.textContent === "Hourly") {
+        let trafficData = trafficOptionHourly;
+    } else if (element.value === "Daily") {
+        let trafficData = trafficOptionDaily;    
+    } else if (element.value === "Weekly") {
+        let trafficData = trafficOptionWeekly;
+    } else if (element.value === "Monthly") {
+        let trafficData = trafficOptionMonthly;
+    }
+});
 
 let trafficChart = new Chart(trafficCanvas, {
     type: 'line',

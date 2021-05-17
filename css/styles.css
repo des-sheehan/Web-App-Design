@@ -165,6 +165,14 @@ nav img:hover {
     font-size: 0.8rem;;
     margin-left: auto;
 }
+.traffic-nav li:hover {
+    cursor: pointer;
+}
+.traffic-nav li:focus {
+    background-color: rgb(46, 173, 68);
+    padding: 0.5rem;
+    border-radius: 25%;
+}
 
 /* ---Social Stats--- */
 .social-boxes {
