@@ -10,13 +10,21 @@ alertBanner.innerHTML =
     <p class="alert-banner-close">X</p>
 </div>
 `
-
+//event listener on Alert Banner close X
 alertBanner.addEventListener('click', e => {
     const element = e.target;
     if (element.classList.contains("alert-banner-close")) {
+        //hide banner
         alertBanner.style.display = "none"
     }
 });
+
+
+// HEADER ALERT ------------------------------------------------------
+
+// //hide Bell in Header
+// document.getElementsByClassName("bell")[0].style.display = "none"
+
 
 // SEND BUTTON ------------------------------------------------------
 
@@ -31,13 +39,23 @@ sendButton.addEventListener('click', e => {
 
 const trafficCanvas = document.getElementById("traffic-chart");
 const trafficSelections = document.getElementById("traffic-options");
-var trafficData;
+
+let trafficDataDefault = {
+    labels: ["16-22", "23-29", "30-5", "6-12", "13-19", "20-26", "27-3", "4-10", "11-17", "18-24", "25-31"],
+    datasets: [{
+        data: [750, 1250, 1000, 2000, 1500, 1750, 1250, 1850, 2250, 1500, 2500],
+        backgroundColor: 'rgba(116, 119, 191, 0.4)',
+        fill: true,
+        borderWidth: 1,
+        tension: 0.3,
+    }]
+};
 
 let trafficDataHourly = {
     labels: ["16-22", "23-29", "30-5", "6-12", "13-19", "20-26", "27-3", "4-10", "11-17", "18-24", "25-31"],
     datasets: [{
         data: [750, 1250, 1000, 2000, 1500, 1750, 1250, 1850, 2250, 1500, 2500],
-        backgroundColor: 'rgba(116, 119, 191, 0.3)',
+        backgroundColor: 'rgba(116, 119, 191, 0.4)',
         fill: true,
         borderWidth: 1,
         tension: 0.3,
@@ -45,10 +63,10 @@ let trafficDataHourly = {
 };
 
 let trafficDataDaily = {
-    labels: ["Sun", "Mon", "Tues", "Wedn", "Thurs", "Fri", "Sat"],
+    labels: ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"],
     datasets: [{
-        data: [2000, 1250, 750, 900, 750, 1500, 2250],
-        backgroundColor: 'rgba(116, 119, 191, 0.3)',
+        data: [2000, 1250, 500, 900, 750, 1500, 2250],
+        backgroundColor: 'rgba(116, 119, 191, 0.4)',
         fill: true,
         borderWidth: 1,
         tension: 0.3,
@@ -59,7 +77,7 @@ let trafficDataWeekly = {
     labels: ["W1", "W2", "W3", "W4"],
     datasets: [{
         data: [2250, 1250, 3000, 3500],
-        backgroundColor: 'rgba(116, 119, 191, 0.3)',
+        backgroundColor: 'rgba(116, 119, 191, 0.4)',
         fill: true,
         borderWidth: 1,
         tension: 0.3,
@@ -69,8 +87,8 @@ let trafficDataWeekly = {
 let trafficDataMonthly = {
     labels: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
     datasets: [{
-        data: [950, 1750, 3000, 1000, 2500, 3750, 1150, 850, 1250, 1500, 1750, 3500],
-        backgroundColor: 'rgba(116, 119, 191, 0.3)',
+        data: [950, 1750, 3000, 1000, 2500, 3750, 1150, 850, 1250, 2000, 1750, 3500],
+        backgroundColor: 'rgba(116, 119, 191, 0.4)',
         fill: true,
         borderWidth: 1,
         tension: 0.3,
@@ -93,20 +111,51 @@ let trafficOptions = {
         }
     }
 };
+// Chart Update Function
+const updateChart = (chart, newData) => {
+    chart.data.labels = newData.labels;
+    chart.data.datasets[0].data = newData.datasets[0].data;
+    chart.update({
+      duration: 800,
+      easing: 'linear',
+    });
+  };
 
-// Need to make a vaiable for the data selection below. 
-// that selection must be the event click target for the chart.
+  //Chart remove Class 'chart-on' function.
+const removeChartClass = () => {
+    for (i=0 ; i < 4; i++) {
+        trafficSelections.children[i].className = ""
+    }
+}
+
+
+var trafficData = trafficDataDefault;
 
 trafficSelections.addEventListener("click", e => {
     const element = e.target;
+
+    // trafficSelections.firstElementChild.classList.remove('chart-on')
+
     if (element.textContent === "Hourly") {
-        let trafficData = trafficOptionHourly;
-    } else if (element.value === "Daily") {
-        let trafficData = trafficOptionDaily;    
-    } else if (element.value === "Weekly") {
-        let trafficData = trafficOptionWeekly;
-    } else if (element.value === "Monthly") {
-        let trafficData = trafficOptionMonthly;
+        let trafficData = trafficDataHourly;
+        updateChart(trafficChart, trafficData);
+        removeChartClass();
+        element.classList.add('chart-on');
+    } else if (element.textContent === "Daily") {
+        let trafficData = trafficDataDaily;  
+        updateChart(trafficChart, trafficData);
+        removeChartClass();
+        element.classList.add('chart-on');
+    } else if (element.textContent === "Weekly") {
+        let trafficData = trafficDataWeekly;
+        updateChart(trafficChart, trafficData);
+        removeChartClass();
+        element.classList.add('chart-on');
+    } else if (element.textContent === "Monthly") {
+        let trafficData = trafficDataMonthly;
+        updateChart(trafficChart, trafficData);
+        removeChartClass();
+        element.classList.add('chart-on');
     }
 });
 
@@ -207,3 +256,11 @@ send.addEventListener('click', e => {
     }
 });
 
+// LOCAL STORAGE ------------------------------------------------------
+
+// const cancelButton = document.getElementById('button-cancel');
+
+// cancelButton.addEventListener('click', () => {
+//     localStorage.removeItem(' insert what to clear here ');
+//     recentSearchList.innerHTML = '';
+//   });
