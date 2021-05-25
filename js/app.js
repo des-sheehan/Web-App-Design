@@ -2,6 +2,7 @@
 // ALERT BANNER ------------------------------------------------------
 
 const alertBanner = document.getElementById("alert");
+const alertDot = document.getElementsByClassName("alert-dot")[0];
 
 alertBanner.innerHTML = 
 `
@@ -16,14 +17,41 @@ alertBanner.addEventListener('click', e => {
     if (element.classList.contains("alert-banner-close")) {
         //hide banner
         alertBanner.style.display = "none"
+        alertDot.style.display = "none";
     }
 });
 
 
-// HEADER ALERT ------------------------------------------------------
+// DROPDOWN ----------------------------------------------------------------
 
-// //hide Bell in Header
-// document.getElementsByClassName("bell")[0].style.display = "none"
+const alertBell = document.getElementById("alert-bell");
+const dropContainer = document.getElementById("dropdown");
+
+// alertBell.addEventListener('click', e => {
+//     console.log("I clicked the button");
+//     dropContainer.classList.toggle("show");
+// });
+
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+
+alertBell.addEventListener('click', e => {
+    dropContainer.classList.toggle("show");
+})
+
+// Close the dropdown menu if the user clicks outside of it
+// window.onclick = function(e) {
+//     if (!e.target.matches('.bell')) {
+//       var dropdowns = document.getElementsByClassName("dropdown-content");
+//       var i;
+//       for (i = 0; i < dropdowns.length; i++) {
+//         var openDropdown = dropdowns[i];
+//         if (openDropdown.classList.contains('show')) {
+//           openDropdown.classList.remove('show');
+//         }
+//       }
+//     }
+//   }
 
 
 // SEND BUTTON ------------------------------------------------------
@@ -258,9 +286,144 @@ send.addEventListener('click', e => {
 
 // LOCAL STORAGE ------------------------------------------------------
 
-// const cancelButton = document.getElementById('button-cancel');
+// These are the HTML properties I want to target for checkboxes: 
 
-// cancelButton.addEventListener('click', () => {
-//     localStorage.removeItem(' insert what to clear here ');
-//     recentSearchList.innerHTML = '';
-//   });
+// function check() {
+//     document.getElementById("myCheck").checked = true;
+// }
+
+// function uncheck() {
+//     document.getElementById("myCheck").checked = false;
+
+// For the time Zone drop down: 
+// var timeChoice = document.getElementById("timezone").selectedIndex;
+
+localStorage.setItem('timeZone', document.getElementById("timezone").selectedIndex);
+
+
+const saveButton = document.getElementById("save");
+const cancelButton = document.getElementById("cancel");
+
+// on save button click; set items to local storage
+saveButton.addEventListener ('submit', () => {
+
+});
+
+cancelButton.addEventListener('click', () => {
+    localStorage.removeItem(' insert what to clear here ');
+    recentSearchList.innerHTML = '';
+  });
+
+
+// AUTO COMPLETE ------------------------------------------------------
+
+var members = [
+    "Victoria Chambers",
+    "Dale Byrd",
+    "Dawn Wood",
+    "Dan Oliver"
+];
+
+const memberSearch = document.getElementById('user-field');
+
+function autocomplete(inp, arr) {
+    /*the autocomplete function takes two arguments,
+    the text field element and an array of possible autocompleted values:*/
+    var currentFocus;
+    /*execute a function when someone writes in the text field:*/
+    inp.addEventListener("input", function(e) {
+        var a, b, i, val = this.value;
+        /*close any already open lists of autocompleted values*/
+        closeAllLists();
+        if (!val) { return false;}
+        currentFocus = -1;
+        /*create a DIV element that will contain the items (values):*/
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "autocomplete-list");
+        a.setAttribute("class", "autocomplete-items");
+
+        /*append the DIV element as a child of the autocomplete container:*/
+        this.parentNode.appendChild(a);
+        
+        /*for each item in the array...*/
+        for (i = 0; i < arr.length; i++) {
+          /*check if the item starts with the same letters as the text field value:*/
+          if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+            /*create a DIV element for each matching element:*/
+            b = document.createElement("DIV");
+            /*make the matching letters bold:*/
+            b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+            b.innerHTML += arr[i].substr(val.length);
+            /*insert a input field that will hold the current array item's value:*/
+            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+            /*execute a function when someone clicks on the item value (DIV element):*/
+                b.addEventListener("click", function(e) {
+                /*insert the value for the autocomplete text field:*/
+                inp.value = this.getElementsByTagName("input")[0].value;
+                /*close the list of autocompleted values,
+                (or any other open lists of autocompleted values:*/
+                closeAllLists();
+            });
+            a.appendChild(b);
+          }
+        }
+    });
+    /*execute a function presses a key on the keyboard:*/
+    inp.addEventListener("keydown", function(e) {
+        var x = document.getElementById(this.id + "autocomplete-list");
+        if (x) x = x.getElementsByTagName("div");
+        if (e.keyCode == 40) {
+          /*If the arrow DOWN key is pressed,
+          increase the currentFocus variable:*/
+          currentFocus++;
+          /*and and make the current item more visible:*/
+          addActive(x);
+        } else if (e.keyCode == 38) { //up
+          /*If the arrow UP key is pressed,
+          decrease the currentFocus variable:*/
+          currentFocus--;
+          /*and and make the current item more visible:*/
+          addActive(x);
+        } else if (e.keyCode == 13) {
+          /*If the ENTER key is pressed, prevent the form from being submitted,*/
+          e.preventDefault();
+          if (currentFocus > -1) {
+            /*and simulate a click on the "active" item:*/
+            if (x) x[currentFocus].click();
+          }
+        }
+    });
+    function addActive(x) {
+      /*a function to classify an item as "active":*/
+      if (!x) return false;
+      /*start by removing the "active" class on all items:*/
+      removeActive(x);
+      if (currentFocus >= x.length) currentFocus = 0;
+      if (currentFocus < 0) currentFocus = (x.length - 1);
+      /*add class "autocomplete-active":*/
+      x[currentFocus].classList.add("autocomplete-active");
+    }
+    function removeActive(x) {
+      /*a function to remove the "active" class from all autocomplete items:*/
+      for (var i = 0; i < x.length; i++) {
+        x[i].classList.remove("autocomplete-active");
+      }
+    }
+    function closeAllLists(elmnt) {
+      /*close all autocomplete lists in the document,
+      except the one passed as an argument:*/
+      var x = document.getElementsByClassName("autocomplete-items");
+      for (var i = 0; i < x.length; i++) {
+        if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+  /*execute a function when someone clicks in the document:*/
+  document.addEventListener("click", function (e) {
+      closeAllLists(e.target);
+  });
+  }
+
+  // run the function on the input for member names
+  autocomplete(memberSearch, members);
