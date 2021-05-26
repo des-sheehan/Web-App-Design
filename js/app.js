@@ -27,32 +27,16 @@ alertBanner.addEventListener('click', e => {
 const alertBell = document.getElementById("alert-bell");
 const dropContainer = document.getElementById("dropdown");
 
-// alertBell.addEventListener('click', e => {
-//     console.log("I clicked the button");
-//     dropContainer.classList.toggle("show");
-// });
-
 /* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
+removes banner
+removes notification dot
+toggles the dropdown content */
 
 alertBell.addEventListener('click', e => {
+    alertBanner.style.display = "none"
+    alertDot.style.display = "none";
     dropContainer.classList.toggle("show");
 })
-
-// Close the dropdown menu if the user clicks outside of it
-// window.onclick = function(e) {
-//     if (!e.target.matches('.bell')) {
-//       var dropdowns = document.getElementsByClassName("dropdown-content");
-//       var i;
-//       for (i = 0; i < dropdowns.length; i++) {
-//         var openDropdown = dropdowns[i];
-//         if (openDropdown.classList.contains('show')) {
-//           openDropdown.classList.remove('show');
-//         }
-//       }
-//     }
-//   }
-
 
 // SEND BUTTON ------------------------------------------------------
 
@@ -286,33 +270,75 @@ send.addEventListener('click', e => {
 
 // LOCAL STORAGE ------------------------------------------------------
 
-// These are the HTML properties I want to target for checkboxes: 
-
-// function check() {
-//     document.getElementById("myCheck").checked = true;
-// }
-
-// function uncheck() {
-//     document.getElementById("myCheck").checked = false;
-
-// For the time Zone drop down: 
-// var timeChoice = document.getElementById("timezone").selectedIndex;
-
-localStorage.setItem('timeZone', document.getElementById("timezone").selectedIndex);
-
 
 const saveButton = document.getElementById("save");
 const cancelButton = document.getElementById("cancel");
+const timeZoneSelection = document.getElementById("timezone")
+const emailCheck = document.getElementById("emailCheck");
+const publicCheck = document.getElementById("publicCheck");
+
+// These are the HTML properties I want to target for checkboxes: 
+
+//sets email to checked.
+function emailOn() {
+    emailCheck.checked = true;
+}
+//sets email to checked.
+function emailOff() {
+    emailCheck.checked = false;
+}
+//sets public profile to unchecked.
+function publicOn() {
+    publicCheck.checked = true;
+}
+//sets email to checked.
+function publicOff() {
+    emailCheck.checked = false;
+}
+
+// a function to load the settings depending on the local Storage values.
+function loadSettings() {
+    if (localStorage.email === "yes") {
+        emailOn()
+    } 
+    if (localStorage.email === "no") {
+        emailOff()
+    }
+    if (localStorage.public === "yes") {
+        publicOn()
+    } 
+    if (localStorage.public === "no") {
+        publicOff()
+    }
+    timeZoneSelection.selectedIndex = localStorage.timeZone;
+}
+
+// run the load Settings Function
+loadSettings();
 
 // on save button click; set items to local storage
-saveButton.addEventListener ('submit', () => {
+saveButton.addEventListener('click', () => {
+    localStorage.setItem('timeZone', timeZoneSelection.selectedIndex);
+
+    if ( emailCheck.checked === true ) {
+        localStorage.setItem("email", "yes")
+    } else if ( emailCheck.checked === false ) {
+        localStorage.setItem("email", "no")
+    }
+
+    if ( publicCheck.checked === true ) {
+        localStorage.setItem("public", "yes")
+    } else if ( publicCheck.checked === false ) {
+        localStorage.setItem("public", "no")
+    }
 
 });
 
+// Cancel button Clears local storage
 cancelButton.addEventListener('click', () => {
-    localStorage.removeItem(' insert what to clear here ');
-    recentSearchList.innerHTML = '';
+    localStorage.clear();
   });
+
 
 
 // AUTO COMPLETE ------------------------------------------------------
