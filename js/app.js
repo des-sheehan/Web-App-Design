@@ -335,8 +335,12 @@ saveButton.addEventListener('click', () => {
 });
 
 // Cancel button Clears local storage
+// sets all settings to default.
 cancelButton.addEventListener('click', () => {
     localStorage.clear();
+    emailCheck.checked = false;
+    publicCheck.checked = false;
+    timeZoneSelection.selectedIndex = "0";
   });
 
 
